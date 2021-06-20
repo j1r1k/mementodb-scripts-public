@@ -21,11 +21,11 @@ var LibraryCommon = {
     const endTime = e.field("End Time");
 
     if (startDate || endDate) {
-      const start = combineDateAndTime(
+      const start = LibraryCommon.combineDateAndTime(
         startDate || endDate,
         startTime || endTime
       );
-      const end = combineDateAndTime(
+      const end = LibraryCommon.combineDateAndTime(
         endDate || startDate,
         endTime || startTime
       );
@@ -44,11 +44,14 @@ var LibraryCommon = {
     const endTime = e.field("End Time");
 
     if (startDate || startTime) {
-      return combineDateAndTime(startDate || endDate, startTime || endTime);
+      return LibraryCommon.combineDateAndTime(
+        startDate || endDate,
+        startTime || endTime
+      );
     }
 
     if (endDate || endTime) {
-      const date = combineDateAndTime(
+      const date = LibraryCommon.combineDateAndTime(
         endDate || startDate,
         endTime || startTime
       );
@@ -69,11 +72,14 @@ var LibraryCommon = {
     const endTime = e.field("End Time");
 
     if (endDate || endTime) {
-      return combineDateAndTime(endDate || startDate, endTime || startTime);
+      return LibraryCommon.combineDateAndTime(
+        endDate || startDate,
+        endTime || startTime
+      );
     }
 
     if (startDate || startTime) {
-      const date = combineDateAndTime(
+      const date = LibraryCommon.combineDateAndTime(
         startDate || endDate,
         startTime || endTime
       );
@@ -87,9 +93,9 @@ var LibraryCommon = {
   },
 
   autofillTime: function (e) {
-    e.set("autofill_duration", getDuration(e));
-    e.set("autofill_start", getStart(e).toDate());
-    e.set("autofill_end", getEnd(e).toDate());
+    e.set("autofill_duration", LibraryCommon.getDuration(e));
+    e.set("autofill_start", LibraryCommon.getStart(e).toDate());
+    e.set("autofill_end", LibraryCommon.getEnd(e).toDate());
     e.set("autofill_instant", e.field("autofill_duration") === 0);
   },
 };
