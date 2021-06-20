@@ -56,4 +56,24 @@ const DirectoryFood = {
       );
     }
   },
+
+  computedCaloriesLabel: function () {
+    return field("computed_calories") + "cal";
+  },
+  computedServingLabel: function () {
+    var note = field("note_Average");
+    var prefix = note ? note + " " : "";
+
+    prefix + field("computed_average") + "g";
+  },
+  computedDescription: function () {
+    return [
+      "pr: ",
+      field("computed_protein"),
+      " | f: ",
+      field("computed_fat"),
+      " | ch: ",
+      field("computed_carbohydrate"),
+    ].join();
+  },
 };
