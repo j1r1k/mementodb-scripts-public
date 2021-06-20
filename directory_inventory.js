@@ -15,7 +15,7 @@ var DirectoryInventory = {
     newEvent.set("start date", created.field("added"));
     newEvent.set(
       "computed_start",
-      moment(created.field("added")).startOf("day")
+      moment(created.field("date added")).startOf("day")
     );
     newEntity.set("inventory", [created]);
   },
