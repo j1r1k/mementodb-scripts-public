@@ -10,9 +10,6 @@ const LibraryTravel = {
       "m",
     ].join(" ");
   },
-  testGetField: function () {
-    return field("Type");
-  },
   computedTitle: function () {
     const type = field("Type");
     const routes = field("Routes");
@@ -46,9 +43,3 @@ const LibraryTravel = {
     LibraryTravel.autofillAll();
   },
 };
-
-/**
- * computed_description:
- *
- *
- */
