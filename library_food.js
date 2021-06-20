@@ -51,5 +51,19 @@ var LibraryFood = {
     newEntity.set("type", "Meal");
     newEntity.set("Food", [created]);
     newEntity.set("Title", created.field("Type"));
+    newEntity.recalc();
   },
+
+  // onDeletePre: function () {
+  //   var toDelete = entry();
+  //   var relatedEvent = libByName("events")
+  //     .entries()
+  //     .filter(function (e) {
+  //       return (
+  //         e.field("Type") === "Meal" && e.field("Food")[0].id === toDelete.id
+  //       );
+  //     });
+
+  //   relatedEvent.delete();
+  // },
 };
