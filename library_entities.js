@@ -32,6 +32,8 @@ var LibraryEntities = {
         return field("Locations")[0].field("Title");
       case "Movie":
         return field("Movies")[0].field("Title");
+      default:
+        return field("Title");
     }
   },
   autofillAll: function () {
