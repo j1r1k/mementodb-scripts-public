@@ -14,9 +14,10 @@ var DirectoryInventory = {
     newEvent.set("title", "Added [" + created.field("title") + "]");
     newEvent.set("start date", created.field("date added"));
     newEvent.set(
-      "computed_start",
+      "autofill_start",
       moment(created.field("date added")).startOf("day")
     );
+    newEvent.set("autofill_instant", true);
     newEntity.set("inventory", [created]);
   },
 };
