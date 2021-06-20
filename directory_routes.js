@@ -66,7 +66,7 @@ const DirectoryRoutes = {
     }
   },
 
-  computePoints: function () {
+  computedPoints: function () {
     if (field("type") === "Simple") {
       var others = field("Related locations")
         .filter(function (item) {
