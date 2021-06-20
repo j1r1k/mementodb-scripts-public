@@ -1,52 +1,3 @@
-function sum(items) {
-  return items.reduce(function (a, b) {
-    return a + b;
-  }, 0);
-}
-
-function getSegmentsLength(segments) {
-  return segments.map(function (segment) {
-    return segment.field("Length");
-  });
-}
-
-function getSegmentsElevationUp(segments) {
-  return segments.map(function (segment) {
-    if (segment.attr("inverted")) {
-      return segment.field("Elevation Down");
-    } else {
-      return segment.field("Elevation Up");
-    }
-  });
-}
-
-function getSegmentsElevationDown(segments) {
-  return segments.map(function (segment) {
-    if (segment.attr("inverted")) {
-      return segment.field("Elevation Up");
-    } else {
-      return segment.field("Elevation Down");
-    }
-  });
-}
-
-if (entry().field("Type") === "Combined") {
-  const le = entry()
-    .field("Segments")
-    .map(function (segment) {
-      return segment.field("length");
-    })
-    .reduce(function (a, b) {
-      return a + b;
-    }, 0);
-
-  const segments = entry().field("segments");
-
-  entry().set("Length", sum(getSegmentsLength(segments)));
-  entry().set("Elevation Up", sum(getSegmentsElevationUp(segments)));
-  entry().set("Elevation Down", sum(getSegmentsElevationDown(segments)));
-}
-
 // computed_start
 function computedStart() {
   if (field("type") === "Simple") {
@@ -123,3 +74,49 @@ function computePoints() {
 }
 
 computePoints();
+
+const DirectoryRoutes = {
+  getSegmentsElevationUp: function (segments) {
+    return segments.map(function (segment) {
+      if (segment.attr("inverted")) {
+        return segment.field("Elevation Down");
+      } else {
+        return segment.field("Elevation Up");
+      }
+    });
+  },
+  getSegmentsElevationDown: function (segments) {
+    return segments.map(function (segment) {
+      if (segment.attr("inverted")) {
+        return segment.field("Elevation Up");
+      } else {
+        return segment.field("Elevation Down");
+      }
+    });
+  },
+  autofillAll: function () {
+    if (entry().field("Type") === "Combined") {
+      const segments = entry().field("segments");
+
+      entry().set("Length", EntriesExt.sumRelated(segments, "Length"));
+      entry().set(
+        "Elevation Up",
+        ArrayExt.sum(DirectoryRoutes.getSegmentsElevationUp(segments))
+      );
+      entry().set(
+        "Elevation Down",
+        ArrayExt.sum(DirectoryRoutes.getSegmentsElevationDown(segments))
+      );
+    }
+  },
+  /**
+   *
+   */
+
+  onCreatePost: function () {
+    EntriesExt.autofillAll();
+  },
+  onUpdatePost: function () {
+    EntriesExt.autofillAll();
+  },
+};
