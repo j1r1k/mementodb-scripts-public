@@ -25,6 +25,9 @@ const ArrayExt = {
   sum: function (items) {
     return ArrayExt.combine(items, Monoid.sum);
   },
+  removeAdjacentDuplicates: function (array) {
+    return array.filter((i, idx) => array[idx - 1] !== i);
+  },
 };
 
 const EntriesExt = {
