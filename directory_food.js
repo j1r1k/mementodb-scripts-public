@@ -64,7 +64,7 @@ const DirectoryFood = {
     var note = field("note_Average");
     var prefix = note ? note + " " : "";
 
-    prefix + field("computed_average") + "g";
+    return prefix + field("computed_average") + "g";
   },
   computedDescription: function () {
     return [
