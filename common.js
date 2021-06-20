@@ -36,4 +36,7 @@ const EntriesExt = {
       monoid
     );
   },
+  sumRelated: function (entries, relatedField) {
+    return this.combineRelated(entries, Monoid.sum);
+  },
 };
