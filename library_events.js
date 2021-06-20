@@ -3,9 +3,9 @@ const LibraryEvents = {
     autofillTime(entry());
   },
   onUpdatePost: function () {
-    LibraryTravel.autofillAll();
+    LibraryEvents.autofillAll();
   },
   onCreatePost: function () {
-    LibraryTravel.autofillAll();
+    LibraryEvents.autofillAll();
   },
 };
