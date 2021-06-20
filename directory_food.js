@@ -68,12 +68,12 @@ var DirectoryFood = {
   },
   computedDescription: function () {
     return [
-      "pr: ",
+      "pr:",
       field("computed_protein"),
-      " | f: ",
+      "| f:",
       field("computed_fat"),
-      " | ch: ",
+      "| ch:",
       field("computed_carbohydrate"),
-    ].join();
+    ].join(" ");
   },
 };
