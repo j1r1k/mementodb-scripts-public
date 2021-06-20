@@ -18,6 +18,6 @@ var DirectoryInventory = {
       moment(created.field("date added")).startOf("day").toDate()
     );
     newEvent.set("autofill_instant", true);
-    newEntity.set("inventory", [created]);
+    newEvent.set("inventory", [created]);
   },
 };
