@@ -1,8 +1,18 @@
 const LibraryTravel = {
-  /**
-   * LibraryTravel.computedTitle(field("Type"), field("Routes"));
-   */
-  computedTitle: function (type, routes) {
+  computedDescription: function () {
+    return [
+      "Σ",
+      field("autofill_length"),
+      "km ↑",
+      field("autofill_elevation_up"),
+      "m ↓",
+      field("autofill_elevation_down"),
+      "m",
+    ].join(" ");
+  },
+  computedTitle: function () {
+    const type = field("Type");
+    const routes = field("Routes");
     const head = ArrayExt.getHead(routes);
     const last = ArrayExt.getLast(routes);
     const suffix = ArrayExt.nonNull([
@@ -12,8 +22,10 @@ const LibraryTravel = {
 
     return [type, suffix].join(" | ");
   },
-  autofillAll: function (routes) {
+  autofillAll: function () {
     autofillTime(entry());
+
+    const routes = entry().field("Routes");
     entry().set("autofill_length", EntriesExt.sumRelated(routes, "length"));
     entry().set(
       "autofill_elevation_up",
@@ -24,13 +36,16 @@ const LibraryTravel = {
       EntriesExt.sumRelated(routes, "Elevation Down")
     );
   },
-  onUpdate: function () {
-    LibraryTravel.autofillAll(entry().field("Routes"));
+  onUpdatePost: function () {
+    LibraryTravel.autofillAll();
+  },
+  onCreatePost: function () {
+    LibraryTravel.autofillAll();
   },
 };
 
 /**
  * computed_description:
  *
- * "Σ " + field('autofill_length') + " km ↑ " + field('autofill_elevation_up') + " m ↓ " + field('autofill_elevation_down') + " m"
+ *
  */
