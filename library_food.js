@@ -1,4 +1,4 @@
-const LibraryFood = {
+var LibraryFood = {
   computedProperty: function (key) {
     return field("Products")
       .map(function (item) {

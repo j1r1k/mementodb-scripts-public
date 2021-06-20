@@ -1,6 +1,6 @@
-const LibraryEvents = {
+var LibraryEvents = {
   autofillAll: function () {
-    autofillTime(entry());
+    LibraryCommon.autofillTime(entry());
   },
   onUpdatePost: function () {
     LibraryEvents.autofillAll();

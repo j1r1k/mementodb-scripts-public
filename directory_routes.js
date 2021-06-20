@@ -1,4 +1,4 @@
-const DirectoryRoutes = {
+var DirectoryRoutes = {
   getSegmentsElevationUp: function (segments) {
     return segments.map(function (segment) {
       if (segment.attr("inverted")) {

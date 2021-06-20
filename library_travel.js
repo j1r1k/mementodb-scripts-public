@@ -1,4 +1,4 @@
-const LibraryTravel = {
+var LibraryTravel = {
   computedDescription: function () {
     return [
       "Σ",
@@ -23,7 +23,7 @@ const LibraryTravel = {
     return [type, suffix].join(" | ");
   },
   autofillAll: function () {
-    autofillTime(entry());
+    LibraryCommon.autofillTime(entry());
 
     const routes = entry().field("Routes");
     entry().set("autofill_length", EntriesExt.sumRelated(routes, "length"));

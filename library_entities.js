@@ -1,4 +1,4 @@
-const LibraryEntities = {
+var LibraryEntities = {
   autofillImage: function () {
     switch (entry().field("type")) {
       case "Board Game":

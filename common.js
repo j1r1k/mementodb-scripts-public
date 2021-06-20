@@ -1,4 +1,4 @@
-const Monoid = {
+var Monoid = {
   sum: {
     empty: 0,
     combine: function (a, b) {
@@ -7,7 +7,7 @@ const Monoid = {
   },
 };
 
-const ArrayExt = {
+var ArrayExt = {
   getHead: function (items) {
     return items[0];
   },
@@ -30,7 +30,7 @@ const ArrayExt = {
   },
 };
 
-const EntriesExt = {
+var EntriesExt = {
   combineRelated: function (entries, relatedField, monoid) {
     return ArrayExt.combine(
       entries.map(function (e) {

@@ -1,4 +1,4 @@
-const DirectoryFood = {
+var DirectoryFood = {
   computedProperty: function (key) {
     if (field("Type") === "Combined") {
       var [value, weight] = field("Multiple")
