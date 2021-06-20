@@ -11,7 +11,7 @@ var DirectoryInventory = {
 
     var newEvent = libByName("events").create({});
     newEvent.set("type", "Inventory");
-    newEvent.set("title", "Added to inventory");
+    newEvent.set("title", "Added [" + created.field("title") + "]");
     newEvent.set("start date", created.field("added"));
     newEvent.set(
       "computed_start",
