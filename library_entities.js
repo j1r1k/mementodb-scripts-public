@@ -13,6 +13,9 @@ var LibraryEntities = {
       case "Game":
         entry().set("image", entry().field("Games")[0].field("Cover"));
         break;
+      case "Item":
+        entry().set("image", entry().field("Inventory")[0].field("Image"));
+        break;
       case "Movie":
         entry().set("image", entry().field("Movies")[0].field("Poster"));
         break;
@@ -28,6 +31,8 @@ var LibraryEntities = {
         return field("Coffee")[0].field("Title");
       case "Game":
         return field("Games")[0].field("Title");
+      case "Item":
+        return field("Inventory")[0].field("Title");
       case "Location":
         return field("Locations")[0].field("Title");
       case "Movie":
