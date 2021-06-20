@@ -36,7 +36,7 @@ var LibraryFood = {
   computedTitle: function () {
     return field("Products")
       .map(function (item) {
-        item.field("Title");
+        return item.field("Title");
       })
       .join(" | ");
   },
