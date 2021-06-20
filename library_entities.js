@@ -21,17 +21,17 @@ var LibraryEntities = {
   computedTitle: function () {
     switch (field("type")) {
       case "Board Game":
-        return field("movies")[0].field("Title");
+        return field("Board Games")[0].field("Title");
       case "Book":
-        return field("movies")[0].field("Title");
+        return field("Books")[0].field("Title");
       case "Coffee":
-        return field("coffee")[0].field("Title");
+        return field("Coffee")[0].field("Title");
       case "Game":
-        return field("games")[0].field("Title");
+        return field("Games")[0].field("Title");
       case "Location":
-        return field("locations")[0].field("Title");
+        return field("Locations")[0].field("Title");
       case "Movie":
-        return field("movies")[0].field("Title");
+        return field("Movies")[0].field("Title");
     }
   },
   autofillAll: function () {
