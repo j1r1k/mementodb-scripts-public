@@ -24,6 +24,9 @@ const LibraryTravel = {
       EntriesExt.sumRelated(routes, "Elevation Down")
     );
   },
+  onUpdate: function () {
+    LibraryTravel.autofillAll(entry().field("Routes"));
+  },
 };
 
 /**
