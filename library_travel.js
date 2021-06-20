@@ -12,7 +12,9 @@ const LibraryTravel = {
   },
   computedTitle: function () {
     const type = field("Type");
+    log(type);
     const routes = field("Routes");
+    log(routes);
     const head = ArrayExt.getHead(routes);
     const last = ArrayExt.getLast(routes);
     const suffix = ArrayExt.nonNull([
