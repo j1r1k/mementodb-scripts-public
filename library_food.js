@@ -40,4 +40,16 @@ var LibraryFood = {
       })
       .join(" | ");
   },
+
+  onCreatePost: function () {
+    var created = entry();
+
+    var newEntity = libByName("events").create({});
+
+    newEntity.set("Start Date", created.field("Date and Time"));
+    newEntity.set("Start Time", created.field("Date and Time"));
+    newEntity.set("type", "Meal");
+    newEntity.set("Food", [created]);
+    newEntity.set("Title", created.field("Type"));
+  },
 };
