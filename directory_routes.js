@@ -93,9 +93,9 @@ var DirectoryRoutes = {
     } else {
       var segments = field("Segments");
 
-      return ArrayExt.combine(
-        ArrayExt.nonEmpty(
-          ArrayExt.removeAdjacentDuplicates(
+      return ArrayExt.nonEmpty(
+        ArrayExt.removeAdjacentDuplicates(
+          ArrayExt.combine(
             segments.map(function (segment) {
               const points = segment.field("computed_points").split(" | ");
               if (segment.attr("inverted")) {
@@ -103,10 +103,10 @@ var DirectoryRoutes = {
               } else {
                 return points;
               }
-            })
+            }),
+            Monoid.array
           )
-        ),
-        Monoid.array
+        )
       ).join(" | ");
     }
   },
