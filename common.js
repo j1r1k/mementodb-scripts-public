@@ -51,6 +51,6 @@ var EntriesExt = {
     );
   },
   sumRelated: function (entries, relatedField) {
-    return this.combineRelated(entries, Monoid.sum);
+    return this.combineRelated(entries, relatedField, Monoid.sum);
   },
 };
