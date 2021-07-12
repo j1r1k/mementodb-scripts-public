@@ -36,10 +36,11 @@ var DirectoryRoutes = {
    *
    */
   computedTitle: function () {
-    const startAndEnd = ArrayExt.nonNull([
-      field("computed_start"),
-      field("computed_end"),
-    ]).join(" → ");
+    const startAndEnd = [field("computed_start"), field("computed_end")]
+      .filter(function (e) {
+        return e !== "";
+      })
+      .join(" → ");
 
     const name = field("name") || "";
 
