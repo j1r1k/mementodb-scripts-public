@@ -36,7 +36,18 @@ var DirectoryRoutes = {
    *
    */
   computedTitle: function () {
-    return [field("computed_start"), field("computed_end")].join(" → ");
+    const startAndEnd = ArrayExt.nonNull([
+      field("computed_start"),
+      field("computed_end"),
+    ]).join(" → ");
+
+    const name = field("name") || "";
+
+    if (name && startAndEnd) {
+      return name + " (" + startAndEnd + ")";
+    }
+
+    return name || startAndEnd | "";
   },
 
   computedStart: function () {
