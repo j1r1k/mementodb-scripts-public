@@ -16,7 +16,7 @@ var ArrayExt = {
   },
   nonNull: function (items) {
     return items.filter(function (i) {
-      return Boolean(i);
+      return i !== undefined && i !== null;
     });
   },
   combine: function (items, monoid) {
