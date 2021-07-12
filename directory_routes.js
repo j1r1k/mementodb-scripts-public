@@ -36,11 +36,10 @@ var DirectoryRoutes = {
    *
    */
   computedTitle: function () {
-    const startAndEnd = [field("computed_start"), field("computed_end")]
-      .filter(function (e) {
-        return e !== "";
-      })
-      .join(" → ");
+    const startAndEnd = ArrayExt.nonEmpty([
+      field("computed_start"),
+      field("computed_end"),
+    ]).join(" → ");
 
     const name = field("name") || "";
 
@@ -88,10 +87,9 @@ var DirectoryRoutes = {
           return item.field("Name");
         });
 
-      return [field("computed_start")]
-        .concat(others)
-        .concat([field("computed_end")])
-        .join(" | ");
+      return ArrayExt.nonEmpty(
+        [field("computed_start")].concat(others).concat([field("computed_end")])
+      ).join(" | ");
     } else {
       var segments = field("Segments");
 

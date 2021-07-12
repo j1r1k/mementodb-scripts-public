@@ -14,6 +14,9 @@ var ArrayExt = {
   getLast: function (items) {
     return items[items.length - 1];
   },
+  nonEmpty: function (str) {
+    return str !== "";
+  },
   nonNull: function (items) {
     return items.filter(function (i) {
       return i !== undefined && i !== null;
