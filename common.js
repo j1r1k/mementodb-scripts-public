@@ -20,8 +20,10 @@ var ArrayExt = {
   getLast: function (items) {
     return items[items.length - 1];
   },
-  nonEmpty: function (str) {
-    return str !== "";
+  nonEmpty: function (array) {
+    return array.filter(function (str) {
+      return str !== "";
+    });
   },
   nonNull: function (items) {
     return items.filter(function (i) {
