@@ -47,7 +47,7 @@ var DirectoryRoutes = {
       return name + " (" + startAndEnd + ")";
     }
 
-    return name || startAndEnd | "";
+    return name || startAndEnd || "";
   },
 
   computedStart: function () {
@@ -55,7 +55,7 @@ var DirectoryRoutes = {
       const start = field("Related locations").find(function (item) {
         return item.attr("Type") == "Start";
       });
-      return start && start.field("Name");
+      return start ? start.field("Name") : "";
     } else {
       const first = field("Segments")[0];
       return first.attr("inverted")
@@ -68,7 +68,7 @@ var DirectoryRoutes = {
       const end = field("Related locations").find(function (item) {
         return item.attr("Type") == "End";
       });
-      return end && end.field("Name");
+      return end ? end.field("Name") : "";
     } else {
       const last = ArrayExt.getLast(field("Segments"));
       return last.attr("inverted")
