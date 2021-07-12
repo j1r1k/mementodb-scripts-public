@@ -5,6 +5,12 @@ var Monoid = {
       return a + b;
     },
   },
+  array: {
+    empty: [],
+    combine: function (a, b) {
+      return a.concat(b);
+    },
+  },
 };
 
 var ArrayExt = {

@@ -93,19 +93,20 @@ var DirectoryRoutes = {
     } else {
       var segments = field("Segments");
 
-      return ArrayExt.removeAdjacentDuplicates(
-        segments
-          .map(function (segment) {
-            const points = segment.field("computed_points").split(" | ");
-            if (segment.attr("inverted")) {
-              return points.reverse();
-            } else {
-              return points;
-            }
-          })
-          .reduce(function (a, b) {
-            return a.concat(b);
-          })
+      return ArrayExt.combine(
+        ArrayExt.nonEmpty(
+          ArrayExt.removeAdjacentDuplicates(
+            segments.map(function (segment) {
+              const points = segment.field("computed_points").split(" | ");
+              if (segment.attr("inverted")) {
+                return points.reverse();
+              } else {
+                return points;
+              }
+            })
+          )
+        ),
+        Monoid.array
       ).join(" | ");
     }
   },
