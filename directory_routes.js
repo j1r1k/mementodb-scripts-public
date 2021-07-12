@@ -112,9 +112,9 @@ var DirectoryRoutes = {
   },
 
   onCreatePost: function () {
-    EntriesExt.autofillAll();
+    DirectoryRoutes.autofillAll();
   },
   onUpdatePost: function () {
-    EntriesExt.autofillAll();
+    DirectoryRoutes.autofillAll();
   },
 };
