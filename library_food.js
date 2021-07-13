@@ -77,7 +77,7 @@ var LibraryFood = {
     const current = entry();
     const events = current.linksFrom("Events", "Food");
 
-    events.forEach(function (event) {
+    events.map(function (event) {
       LibraryFood.fillEvent(current, event);
     });
   },
