@@ -13,6 +13,14 @@ var Monoid = {
   },
 };
 
+var StringExt = {
+  padStart: function (str, length, symbol) {
+    return str.length >= length
+      ? str
+      : symbol.repeat(length - str.length).slice(0, length - str.length) + str;
+  },
+};
+
 var ArrayExt = {
   getHead: function (items) {
     return items[0];

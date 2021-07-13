@@ -7,9 +7,9 @@ var LibraryEvents = {
     } else {
       const duration = moment.duration(field("autofill_duration"));
       return [
-        String(duration.hours()).padStart(2, "0"),
-        String(duration.minutes()).padStart(2, "0"),
-        String(duration.seconds()).padStart(2, "0"),
+        StringExt.padStart(String(duration.hours()), 2, "0"),
+        StringExt.padStart(String(duration.minutes()), 2, "0"),
+        StringExt.padStart(String(duration.seconds()), 2, "0"),
       ].join(":");
     }
   },
