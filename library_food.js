@@ -59,17 +59,27 @@ var LibraryFood = {
     entryDefault().set("Type", type);
   },
 
-  onCreatePost: function () {
-    var created = entry();
-    var newEntity = libByName("events").create({});
+  fillEvent: function (currentEntry, eventEntry) {
+    eventEntry.set("Start Date", currentEntry.field("Date and Time"));
+    eventEntry.set("Start Time", currentEntry.field("Date and Time"));
+    eventEntry.set("autofill_start", currentEntry.field("Date and Time"));
+    eventEntry.set("type", "Meal");
+    eventEntry.set("Food", [currentEntry]);
+    eventEntry.set("Title", currentEntry.field("Type"));
+    eventEntry.recalc();
+  },
 
-    newEntity.set("Start Date", created.field("Date and Time"));
-    newEntity.set("Start Time", created.field("Date and Time"));
-    newEntity.set("autofill_start", created.field("Date and Time"));
-    newEntity.set("type", "Meal");
-    newEntity.set("Food", [created]);
-    newEntity.set("Title", created.field("Type"));
-    newEntity.recalc();
+  onCreatePost: function () {
+    LibraryFood.fillEvent(entry(), libByName("events").create({}));
+  },
+
+  onUpdatePost: function () {
+    const current = entry();
+    const events = current.linksFrom("Events", "Food");
+
+    events.forEach(function (event) {
+      LibraryFood.fillEvent(current, event);
+    });
   },
 
   // onDeletePre: function () {
