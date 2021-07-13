@@ -3,7 +3,8 @@ var LibraryEvents = {
     const durationHours = field("autofill_duration") / 3600000;
 
     if (durationHours >= 24) {
-      return field("computed_days") + " days";
+      const days = field("computed_days");
+      return days + " day" + (days > 1 ? "s" : "");
     } else {
       const duration = moment.duration(field("autofill_duration"));
       return [
