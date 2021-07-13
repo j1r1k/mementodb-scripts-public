@@ -41,6 +41,24 @@ var LibraryFood = {
       .join(" | ");
   },
 
+  onCreatePre: function () {
+    const h = new Date().getHours();
+
+    var type = "Breakfast";
+
+    if (h >= 17) {
+      type = "Dinner";
+    } else if (h >= 15) {
+      type = "Snack 2";
+    } else if (h >= 11) {
+      type = "Lunch";
+    } else if (h >= 9) {
+      type = "Snack 1";
+    }
+
+    entryDefault().set("Type", type);
+  },
+
   onCreatePost: function () {
     var created = entry();
     var newEntity = libByName("events").create({});
