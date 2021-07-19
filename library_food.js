@@ -42,21 +42,23 @@ var LibraryFood = {
   },
 
   onCreatePre: function () {
-    const h = new Date().getHours();
+    if (entryDefault()) {
+      const h = new Date().getHours();
 
-    var type = "Breakfast";
+      var type = "Breakfast";
 
-    if (h >= 17) {
-      type = "Dinner";
-    } else if (h >= 15) {
-      type = "Snack 2";
-    } else if (h >= 11) {
-      type = "Lunch";
-    } else if (h >= 9) {
-      type = "Snack 1";
+      if (h >= 17) {
+        type = "Dinner";
+      } else if (h >= 15) {
+        type = "Snack 2";
+      } else if (h >= 11) {
+        type = "Lunch";
+      } else if (h >= 9) {
+        type = "Snack 1";
+      }
+
+      entryDefault().set("Type", type);
     }
-
-    entryDefault().set("Type", type);
   },
 
   fillEvent: function (currentEntry, eventEntry) {
