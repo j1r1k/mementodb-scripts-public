@@ -84,7 +84,7 @@ var DirectoryRoutes = {
           return item.attr("Type") == "Other";
         })
         .map(function (item) {
-          return item.field("Name");
+          return item.field("Title");
         });
 
       return ArrayExt.nonEmpty(
