@@ -33,7 +33,7 @@ var LibraryFood = {
       .reduce(function (a, b) {
         return a + b;
       }, 0)
-      .toFixed(2);
+      .toFixed(0);
   },
 
   computedWeightLabel: function () {
