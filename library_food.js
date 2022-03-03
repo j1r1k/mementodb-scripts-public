@@ -18,6 +18,28 @@ var LibraryFood = {
       .toFixed(2);
   },
 
+  computedWeight: function () {
+    return field("Products")
+      .map(function (item) {
+        if (item.attr("Weight") > 0) {
+          return item.attr("Weight");
+        } else {
+          return (
+            item.attr("Quantity") *
+            item.field("computed_" + item.attr("serving"))
+          );
+        }
+      })
+      .reduce(function (a, b) {
+        return a + b;
+      }, 0)
+      .toFixed(2);
+  },
+
+  computedWeightLabel: function () {
+    return field("computed_weight") + "g";
+  },
+
   computedDescription: function () {
     return [
       "pr:",
@@ -26,6 +48,8 @@ var LibraryFood = {
       field("computed_fat"),
       "| ch:",
       field("computed_carbohydrate"),
+      "| fi:",
+      field("computed_fiber"),
     ].join(" ");
   },
 
@@ -63,7 +87,7 @@ var LibraryFood = {
 
   fillEvent: function (currentEntry, eventEntry) {
     eventEntry.set("Start Date", currentEntry.field("Date and Time"));
-    eventEntry.set("Start Time", currentEntry.field("Date and Time"));
+    eventEntry.set("Start Time", currentEntry.field("End Time"));
     eventEntry.set("autofill_start", currentEntry.field("Date and Time"));
     eventEntry.set("type", "Meal");
     eventEntry.set("Food", [currentEntry]);
