@@ -61,10 +61,13 @@ var DirectoryFood = {
     return field("computed_calories") + "cal";
   },
   computedServingLabel: function () {
-    var note = field("note_Average");
-    var prefix = note ? note + " " : "";
+    var getLabel = function (key) {
+      var note = field("note_" + key);
+      var prefix = note ? note + " " : "";
 
-    return prefix + field("computed_average") + "g";
+      return prefix + field("computed_" + key) + "g";
+    },
+    return [getLabel("small"), getLabel("average"), getLabel("large")]
   },
   computedDescription: function () {
     return [
@@ -74,6 +77,8 @@ var DirectoryFood = {
       field("computed_fat"),
       "| ch:",
       field("computed_carbohydrate"),
+      "| fi:",
+      field("computed_fiber"),
     ].join(" ");
   },
 };
