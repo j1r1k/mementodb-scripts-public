@@ -60,6 +60,12 @@ var DirectoryFood = {
   computedCaloriesLabel: function () {
     return field("computed_calories") + "cal";
   },
+  computedServingLabelSingle: function (key) {
+    var note = field("note_" + key);
+    var prefix = note ? note + " " : "";
+
+    return prefix + field("computed_" + key) + "g";
+  },
   computedServingLabel: function () {
     var getLabel = function (key) {
       var note = field("note_" + key);
@@ -67,7 +73,11 @@ var DirectoryFood = {
 
       return prefix + field("computed_" + key) + "g";
     };
-    return [getLabel("small"), getLabel("average"), getLabel("large")];
+    return [
+      DirectoryFood.computedServingLabelSingle("small"),
+      DirectoryFood.computedServingLabelSingle("average"),
+      DirectoryFood.computedServingLabelSingle("large"),
+    ].join(" | ");
   },
   computedDescription: function () {
     return [
