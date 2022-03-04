@@ -64,7 +64,7 @@ var DirectoryFood = {
     var note = field("note_" + key);
     var prefix = note ? note + " " : "";
 
-    return prefix + field("computed_" + key) + "g";
+    return prefix + String(field("computed_" + key)) + "g";
   },
   computedServingLabel: function () {
     return [
