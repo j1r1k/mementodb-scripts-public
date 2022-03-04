@@ -67,12 +67,6 @@ var DirectoryFood = {
     return prefix + field("computed_" + key) + "g";
   },
   computedServingLabel: function () {
-    var getLabel = function (key) {
-      var note = field("note_" + key);
-      var prefix = note ? note + " " : "";
-
-      return prefix + field("computed_" + key) + "g";
-    };
     return [
       DirectoryFood.computedServingLabelSingle("small"),
       DirectoryFood.computedServingLabelSingle("average"),
