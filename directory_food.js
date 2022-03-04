@@ -66,8 +66,8 @@ var DirectoryFood = {
       var prefix = note ? note + " " : "";
 
       return prefix + field("computed_" + key) + "g";
-    },
-    return [getLabel("small"), getLabel("average"), getLabel("large")]
+    };
+    return [getLabel("small"), getLabel("average"), getLabel("large")];
   },
   computedDescription: function () {
     return [
