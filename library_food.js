@@ -43,13 +43,15 @@ var LibraryFood = {
   computedDescription: function () {
     return [
       "pr:",
-      field("computed_protein"),
+      Math.trunc(field("computed_protein")),
       "| f:",
-      field("computed_fat"),
+      Math.trunc(field("computed_fat")),
+      "| sf:",
+      Math.trunc(field("computed_saturatedFattyAcid")),
       "| ch:",
-      field("computed_carbohydrate"),
+      Math.trunc(field("computed_carbohydrate")),
       "| fi:",
-      field("computed_fiber"),
+      Math.trunc(field("computed_fiber")),
     ].join(" ");
   },
 
