@@ -51,19 +51,19 @@ var LibraryFood = {
     var makeLine = function (prefix, unit) {
       return [
         "pr: ",
-        Math.trunc(field(prefix + "_protein")),
+        Math.trunc(field(prefix + "protein")),
         unit,
         " | f: ",
-        Math.trunc(field(prefix + "_fat")),
+        Math.trunc(field(prefix + "fat")),
         unit,
         " (sf: ",
-        Math.trunc(field(prefix + "_saturatedFattyAcid")),
+        Math.trunc(field(prefix + "saturatedFattyAcid")),
         unit,
         ") | ch: ",
-        Math.trunc(field(prefix + "_carbohydrate")),
+        Math.trunc(field(prefix + "carbohydrate")),
         unit,
         " | fi: ",
-        Math.trunc(field(prefix + "_fiber")),
+        Math.trunc(field(prefix + "fiber")),
         unit,
       ].join("");
     };
