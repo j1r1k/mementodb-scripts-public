@@ -37,26 +37,45 @@ var LibraryFood = {
   },
 
   computedWeightLabel: function () {
-    return field("computed_weight") + "g";
+    return Math.round(field("computed_weight")) + " g";
+  },
+
+  computedCaloriesRatio: function (key, field_calories) {
+    var calories = LibraryFood.computedProperty("calories");
+    var field = LibraryFood.computedProperty(key);
+
+    return ((field * field_calories) / calories).toFixed(0);
   },
 
   computedDescription: function () {
-    return [
+    var l1 = [
       "pr:",
       Math.trunc(field("computed_protein")),
       "| f:",
       Math.trunc(field("computed_fat")),
-      "| sf:",
+      "(sf:",
       Math.trunc(field("computed_saturatedFattyAcid")),
-      "| ch:",
+      ") | ch:",
       Math.trunc(field("computed_carbohydrate")),
       "| fi:",
       Math.trunc(field("computed_fiber")),
     ].join(" ");
+    var l2 = [
+      "pr:",
+      Math.trunc(field("computed_calories_ratio_protein")),
+      "| f:",
+      Math.trunc(field("computed_calories_ratio_fat")),
+      "| ch:",
+      Math.trunc(field("computed_calories_ratio_carbohydrate")),
+      "| fi:",
+      Math.trunc(field("computed_calories_ratio_fiber")),
+    ].join(" ");
+
+    return [l1, l2].join("\n");
   },
 
   computedCaloriesLabel: function () {
-    return field("computed_calories") + "cal";
+    return Math.round(field("computed_calories")) + " cal";
   },
 
   computedTitle: function () {
@@ -79,47 +98,11 @@ var LibraryFood = {
         type = "Snack 2";
       } else if (h >= 11) {
         type = "Lunch";
-      } else if (h >= 9) {
+      } else if (h >= 10) {
         type = "Snack 1";
       }
 
       entryDefault().set("Type", type);
     }
   },
-
-  fillEvent: function (currentEntry, eventEntry) {
-    eventEntry.set("Start Date", currentEntry.field("Date and Time"));
-    eventEntry.set("Start Time", currentEntry.field("End Time"));
-    eventEntry.set("autofill_start", currentEntry.field("Date and Time"));
-    eventEntry.set("type", "Meal");
-    eventEntry.set("Food", [currentEntry]);
-    eventEntry.set("Title", currentEntry.field("Type"));
-    eventEntry.recalc();
-  },
-
-  onCreatePost: function () {
-    LibraryFood.fillEvent(entry(), libByName("events").create({}));
-  },
-
-  onUpdatePost: function () {
-    const current = entry();
-    const events = current.linksFrom("Events", "Food");
-
-    events.map(function (event) {
-      LibraryFood.fillEvent(current, event);
-    });
-  },
-
-  // onDeletePre: function () {
-  //   var toDelete = entry();
-  //   var relatedEvent = libByName("events")
-  //     .entries()
-  //     .filter(function (e) {
-  //       return (
-  //         e.field("Type") === "Meal" && e.field("Food")[0].id === toDelete.id
-  //       );
-  //     });
-
-  //   relatedEvent.delete();
-  // },
 };
