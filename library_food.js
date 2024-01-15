@@ -49,28 +49,30 @@ var LibraryFood = {
 
   computedDescription: function () {
     var l1 = [
-      "pr:",
+      "pr: ",
       Math.trunc(field("computed_protein")),
-      "| f:",
+      " | f:",
       Math.trunc(field("computed_fat")),
-      "(sf:",
+      " (sf:",
       Math.trunc(field("computed_saturatedFattyAcid")),
-      ") | ch:",
+      ") | ch: ",
       Math.trunc(field("computed_carbohydrate")),
-      "| fi:",
+      " | fi: ",
       Math.trunc(field("computed_fiber")),
-    ].join(" ");
+    ].join("");
     var l2 = [
-      "pr:",
+      "pr: ",
       Math.round(field("computed_calories_ratio_protein")),
-      "% | f:",
+      "% | f: ",
       Math.round(field("computed_calories_ratio_fat")),
-      "% | ch:",
+      "% (sf: ",
+      Math.round(field("computed_calories_ratio_saturatedFattyAcid")),
+      ") | ch: ",
       Math.round(field("computed_calories_ratio_carbohydrate")),
-      "% | fi:",
+      "% | fi: ",
       Math.round(field("computed_calories_ratio_fiber")),
       "%",
-    ].join(" ");
+    ].join("");
 
     return [l1, l2].join("\n");
   },
