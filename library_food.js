@@ -48,31 +48,28 @@ var LibraryFood = {
   },
 
   computedDescription: function () {
-    var l1 = [
-      "pr: ",
-      Math.trunc(field("computed_protein")),
-      " | f:",
-      Math.trunc(field("computed_fat")),
-      " (sf:",
-      Math.trunc(field("computed_saturatedFattyAcid")),
-      ") | ch: ",
-      Math.trunc(field("computed_carbohydrate")),
-      " | fi: ",
-      Math.trunc(field("computed_fiber")),
-    ].join("");
-    var l2 = [
-      "pr: ",
-      Math.round(field("computed_calories_ratio_protein")),
-      "% | f: ",
-      Math.round(field("computed_calories_ratio_fat")),
-      "% (sf: ",
-      Math.round(field("computed_calories_ratio_saturatedFattyAcid")),
-      ") | ch: ",
-      Math.round(field("computed_calories_ratio_carbohydrate")),
-      "% | fi: ",
-      Math.round(field("computed_calories_ratio_fiber")),
-      "%",
-    ].join("");
+    var makeLine = function (prefix, unit) {
+      return [
+        "pr: ",
+        Math.trunc(field(prefix + "_protein")),
+        unit,
+        " | f: ",
+        Math.trunc(field(prefix + "_fat")),
+        unit,
+        " (sf: ",
+        Math.trunc(field(prefix + "_saturatedFattyAcid")),
+        unit,
+        ") | ch: ",
+        Math.trunc(field(prefix + "_carbohydrate")),
+        unit,
+        " | fi: ",
+        Math.trunc(field(prefix + "_fiber")),
+        unit,
+      ].join("");
+    };
+
+    var l1 = makeLine("computed_", "g");
+    var l2 = makeLine("computed_calories_ratio_", "%");
 
     return [l1, l2].join("\n");
   },
