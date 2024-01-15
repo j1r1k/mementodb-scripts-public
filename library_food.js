@@ -62,13 +62,14 @@ var LibraryFood = {
     ].join(" ");
     var l2 = [
       "pr:",
-      Math.trunc(field("computed_calories_ratio_protein")),
-      "| f:",
-      Math.trunc(field("computed_calories_ratio_fat")),
-      "| ch:",
-      Math.trunc(field("computed_calories_ratio_carbohydrate")),
-      "| fi:",
-      Math.trunc(field("computed_calories_ratio_fiber")),
+      Math.round(field("computed_calories_ratio_protein")),
+      "% | f:",
+      Math.round(field("computed_calories_ratio_fat")),
+      "% | ch:",
+      Math.round(field("computed_calories_ratio_carbohydrate")),
+      "% | fi:",
+      Math.round(field("computed_calories_ratio_fiber")),
+      "%",
     ].join(" ");
 
     return [l1, l2].join("\n");
