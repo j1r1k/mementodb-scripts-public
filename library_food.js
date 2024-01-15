@@ -44,7 +44,7 @@ var LibraryFood = {
     var calories = LibraryFood.computedProperty("calories");
     var field = LibraryFood.computedProperty(key);
 
-    return ((field * field_calories) / calories).toFixed(0);
+    return ((100 * (field * field_calories)) / calories).toFixed(2);
   },
 
   computedDescription: function () {
