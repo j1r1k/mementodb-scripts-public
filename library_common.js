@@ -57,7 +57,7 @@ var LibraryCommon = {
       );
 
       if (duration) {
-        return date.substract(duration, "milliseconds");
+        return date.subtract(duration, "milliseconds");
       } else {
         return date;
       }
