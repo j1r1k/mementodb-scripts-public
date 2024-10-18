@@ -1,21 +1,21 @@
 var LibraryMovies = {
-  autofillImage: function () {
-    switch (entry().field("type")) {
+  autofillImage: function (e) {
+    switch (e.field("type")) {
       case "Movie":
-        entry().set("image", entry().field("Movies")[0].field("Poster"));
+        e.set("image", e.field("Movies")[0].field("Poster"));
         break;
       case "Show":
-        entry().set("image", entry().field("Shows")[0].field("Poster"));
+        e.set("image", e.field("Shows")[0].field("Poster"));
         break;
     }
   },
-  autofillAll: function () {
-    LibraryMovies.autofillImage();
+  autofillAll: function (e) {
+    LibraryMovies.autofillImage(e);
   },
-  onCreatePost: function () {
-    LibraryMovies.autofillAll();
+  onCreatePost: function (e) {
+    LibraryMovies.autofillAll(e);
   },
-  onUpdatePost: function () {
-    LibraryMovies.autofillAll();
+  onUpdatePost: function (e) {
+    LibraryMovies.autofillAll(e);
   },
 };

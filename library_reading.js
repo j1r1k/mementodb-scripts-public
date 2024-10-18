@@ -1,14 +1,14 @@
 var LibraryReading = {
-  autofillImage: function () {
-    entry().set("image", entry().field("Books")[0].field("Cover"));
+  autofillImage: function (e) {
+    e.set("image", e.field("Books")[0].field("Cover"));
   },
-  autofillAll: function () {
-    LibraryReading.autofillImage();
+  autofillAll: function (e) {
+    LibraryReading.autofillImage(e);
   },
-  onCreatePost: function () {
-    LibraryReading.autofillAll();
+  onCreatePost: function (e) {
+    LibraryReading.autofillAll(e);
   },
-  onUpdatePost: function () {
-    LibraryReading.autofillAll();
+  onUpdatePost: function (e) {
+    LibraryReading.autofillAll(e);
   },
 };
