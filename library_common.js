@@ -1,11 +1,14 @@
 var LibraryCommon = {
   combineDateAndTime: function (dateStr, timeStr) {
-    const date = moment(dateStr).startOf("day");
-    const time = moment
-      .duration(new Date(timeStr).getTime(), "milliseconds")
-      .add(1, "hour");
+    const date = moment(dateStr);
+    const time = moment(new Date(timeStr));
 
-    return date.add(time);
+    date.add(time.hours(), "hours");
+    date.add(time.minutes(), "minutes");
+    date.add(time.seconds(), "seconds");
+    date.add(time.milliseconds(), "milliseconds");
+
+    return date;
   },
 
   getDuration: function (e) {
