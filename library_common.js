@@ -3,10 +3,10 @@ var LibraryCommon = {
     const date = moment(dateStr);
     const time = moment(new Date(timeStr));
 
-    date.add(time.hours(), "hours");
-    date.add(time.minutes(), "minutes");
-    date.add(time.seconds(), "seconds");
-    date.add(time.milliseconds(), "milliseconds");
+    date.hours(time.hours());
+    date.minutes(time.minutes());
+    date.seconds(time.seconds());
+    date.milliseconds(time.milliseconds());
 
     return date;
   },
