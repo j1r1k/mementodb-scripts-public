@@ -1,12 +1,12 @@
 var LibraryEvents = {
-  computedStatus: function () {
-    const durationHours = field("autofill_duration") / 3600000;
+  computedStatus: function (e) {
+    const durationHours = e.field("autofill_duration") / 3600000;
 
     if (durationHours >= 24) {
-      const days = field("computed_days");
+      const days = e.field("computed_days");
       return days + " day" + (days > 1 ? "s" : "");
     } else {
-      const duration = moment.duration(field("autofill_duration"));
+      const duration = moment.duration(e.field("autofill_duration"));
       return [
         StringExt.padStart(String(duration.hours()), 2, "0"),
         StringExt.padStart(String(duration.minutes()), 2, "0"),
@@ -14,13 +14,13 @@ var LibraryEvents = {
       ].join(":");
     }
   },
-  autofillAll: function () {
-    LibraryCommon.autofillTime(entry());
+  autofillAll: function (e) {
+    LibraryCommon.autofillTime(e);
   },
-  onUpdatePost: function () {
-    LibraryEvents.autofillAll();
+  onUpdatePost: function (e) {
+    LibraryEvents.autofillAll(e);
   },
-  onCreatePost: function () {
-    LibraryEvents.autofillAll();
+  onCreatePost: function (e) {
+    LibraryEvents.autofillAll(e);
   },
 };
